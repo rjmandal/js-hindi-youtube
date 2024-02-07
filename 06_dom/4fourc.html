@@ -1,20 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chai or code | DOM</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
 </head>
-<body style="background-color: #212121;color: #fff;">
+
+<body>
     <ul class="language">
         <li>Javascript</li>
     </ul>
 </body>
 <script>
-    const parent =document.querySelector(".language")
-    function addLanguage(langName){
-        parent.appendChild(document.createElement("li")).innerHTML = `${langName}`
+    const parent = document.querySelector(".language")
+    function addLanguage(langName) {
+        const li = parent.appendChild(document.createElement("li"))
+        li.innerHTML = `${langName}`
     }
-    addLanguage("sanjay")
+    addLanguage("c++")
+    addLanguage("python")
+    addLanguage("c")
+// optimized way to add element and
+    function addOptiLanguage(langName) {
+        const li = document.createElement("li")
+        parent.appendChild(li)
+        li.appendChild(document.createTextNode(langName))
+    }
+    addOptiLanguage("typeScript")
+
+// replace element with targetd element  
+    const secondLang = document.querySelector("li:nth-child(2)")
+    const newli = document.createElement("li")
+    newli.textContent="mojo"
+    secondLang.replaceWith(newli)
+
+    // edit
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML='<li>TypeScript</li>'
+    // remove
+    // const lastLang = document.querySelector("li:last-child")
+    // lastLang.remove()
+    document.querySelector("li:last-child").remove()
 </script>
+
 </html>
